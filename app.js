@@ -2,11 +2,11 @@ const express= require('express');
 const mongoose = require('mongoose');
 
 const app =express(); 
-
+const PORT = process.env.PORT || 3000;
 app.use(express.json()); // to parse the incoming request with JSON payloads
 
 // connect to mongodb
-const MONGO_URI ='mongodb://localhost:27017/crud'
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/crud';
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
@@ -109,4 +109,4 @@ app.put('/user/:user', async(req, res)=>{
 });
 
 
-app.listen(3000, () => console.log('Server is running on port 3000'));
+app.listen(PORT, () => console.log('Server is running on port 3000'));
